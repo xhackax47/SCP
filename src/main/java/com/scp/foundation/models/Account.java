@@ -17,6 +17,7 @@ public class Account {
 	public String getDefaultEmail() {
 		return defaultEmail;
 	}
+	
 	public void setDefaultEmail(String defaultEmail) {
 		this.defaultEmail = defaultEmail;
 	}
