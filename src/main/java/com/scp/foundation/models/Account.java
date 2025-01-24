@@ -9,9 +9,8 @@ public class Account {
     private Long id;
     private String defaultEmail;
     
-	public Account(Long id, String defaultEmail) {
+	public Account(String defaultEmail) {
 		super();
-		this.id = id;
 		this.defaultEmail = defaultEmail;
 	}
 	
