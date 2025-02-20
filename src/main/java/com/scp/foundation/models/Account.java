@@ -41,6 +41,10 @@ public class Account {
 		return status;
 	}
 	
+	public String getStatusName() {
+		return status.toString();
+	}
+	
 	public void setStatus(Status status) {
 		this.status = status;
 	}
