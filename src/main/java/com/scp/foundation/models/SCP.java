@@ -7,31 +7,31 @@ import jakarta.persistence.Id;
 
 @Entity
 public class SCP {
-	    @Id 
-	    @GeneratedValue(strategy=GenerationType.AUTO)
-	    private Long id;
-	    private String name;
-	    private String description;
-	    
-		public SCP(String name, String description) {
-			super();
-			this.name = name;
-			this.description = description;
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String name;
+	private String description;
 
-		public String getName() {
-			return name;
-		}
+	public SCP(String name, String description) {
+		super();
+		this.name = name;
+		this.description = description;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public String getDescription() {
-			return description;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }
