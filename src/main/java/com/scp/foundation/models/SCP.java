@@ -12,11 +12,19 @@ public class SCP {
 	private Long id;
 	private String name;
 	private String description;
+	
+    public SCP(){
+    	super();
+    }
 
 	public SCP(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {

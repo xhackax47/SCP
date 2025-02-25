@@ -18,7 +18,7 @@ public class AccountController {
 	
 	// Permet de récupérer la liste de tous les comptes
 	@GetMapping("/accounts")
-	public List<Account> getAccounts() {
+	public List<Account> getAllAccounts() {
 		return accountRepository.findAll();
 	}
 	
@@ -56,9 +56,6 @@ public class AccountController {
 	public String deleteAccount(@PathVariable Long id) {
 		Account account = accountRepository.findById(id).orElseThrow();
 		accountRepository.delete(account);
-		if(account != null) {
-			return "ERREUR - Le compte n'a pas été supprimé";
-		}
 		return null;
 	}
 }

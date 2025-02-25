@@ -6,19 +6,27 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Rapport {
+public class Report {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String description;
 	private Status securityLevel;
+	
+    public Report(){
+    	super();
+    }
 
-	public Rapport(String name, String description, Status securityLevel) {
+	public Report(String name, String description, Status securityLevel) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.securityLevel = securityLevel;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 
 	public String getName() {
