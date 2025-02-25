@@ -14,13 +14,20 @@ public class Account {
     private String userName;
     private Status status;
     
+    public Account(){
+    	super();
+    }
+    
 	public Account(String defaultEmail, String userName, Status status) {
-		super();
 		this.defaultEmail = defaultEmail;
 		this.userName = userName;
 		this.status = status;
 	}
 	
+	public Long getId() {
+		return id;
+	}
+
 	public String getDefaultEmail() {
 		return defaultEmail;
 	}
