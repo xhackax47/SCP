@@ -1,6 +1,4 @@
-package com.scp.foundation.models;
-
-import com.scp.foundation.enums.AccountSecurityLevel;
+package com.scp.foundation.models.scp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -8,23 +6,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Report {
+public final class EuclidSCP extends SCP {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String description;
-	private AccountSecurityLevel securityLevel;
 	
-    public Report(){
+    public EuclidSCP(){
     	super();
     }
 
-	public Report(String name, String description, AccountSecurityLevel securityLevel) {
+	public EuclidSCP(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.securityLevel = securityLevel;
 	}
 	
 	public Long getId() {
@@ -45,17 +41,5 @@ public class Report {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public AccountSecurityLevel getSecurityLevel() {
-		return securityLevel;
-	}
-
-	public String getSecurityLevelName() {
-		return securityLevel.name();
-	}
-
-	public void setSecurityLevel(AccountSecurityLevel securityLevel) {
-		this.securityLevel = securityLevel;
 	}
 }

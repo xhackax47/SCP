@@ -1,5 +1,7 @@
 package com.scp.foundation.models;
 
+import com.scp.foundation.enums.AccountSecurityLevel;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,13 +14,13 @@ public class Account {
     private Long id;
     private String defaultEmail;
     private String userName;
-    private Status status;
+    private AccountSecurityLevel status;
     
     public Account(){
     	super();
     }
     
-	public Account(String defaultEmail, String userName, Status status) {
+	public Account(String defaultEmail, String userName, AccountSecurityLevel status) {
 		this.defaultEmail = defaultEmail;
 		this.userName = userName;
 		this.status = status;
@@ -44,7 +46,7 @@ public class Account {
 		this.userName = userName;
 	}
 	
-	public Status getStatus() {
+	public AccountSecurityLevel getStatus() {
 		return status;
 	}
 	
@@ -52,7 +54,7 @@ public class Account {
 		return status.toString();
 	}
 	
-	public void setStatus(Status status) {
+	public void setStatus(AccountSecurityLevel status) {
 		this.status = status;
 	}
 }

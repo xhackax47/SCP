@@ -1,4 +1,4 @@
-package com.scp.foundation.models;
+package com.scp.foundation.models.scp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,18 +6,18 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class SCP {
+public final class ThaumielSCP extends SCP {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	private String description;
 	
-    public SCP(){
+    public ThaumielSCP(){
     	super();
     }
 
-	public SCP(String name, String description) {
+	public ThaumielSCP(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;

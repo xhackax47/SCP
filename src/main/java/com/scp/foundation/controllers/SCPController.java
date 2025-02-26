@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.scp.foundation.domains.SCPRepository;
-import com.scp.foundation.models.SCP;
+import com.scp.foundation.models.scp.SCP;
 
 @RestController
 public class SCPController {

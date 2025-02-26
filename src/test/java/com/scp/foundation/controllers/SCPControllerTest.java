@@ -22,7 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.scp.foundation.domains.SCPRepository;
-import com.scp.foundation.models.SCP;
+import com.scp.foundation.models.scp.SCP;
 
 @SpringBootTest
 @ContextConfiguration

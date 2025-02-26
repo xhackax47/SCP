@@ -1,7 +1,7 @@
 package com.scp.foundation.controllers;
 
-import com.scp.foundation.models.Status;
+import com.scp.foundation.enums.AccountSecurityLevel;
 
-public record ReportDto(Long id, String name, String description, Status securityLevel) {
+public record ReportDto(Long id, String name, String description, AccountSecurityLevel securityLevel) {
 
 }
