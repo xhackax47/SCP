@@ -1,4 +1,4 @@
-package com.scp.foundation.controllers;
+package com.scp.foundation.controllers.account;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,20 +21,18 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.scp.foundation.controllers.report.ReportDto;
-import com.scp.foundation.domains.report.ReportRepository;
-import com.scp.foundation.models.report.Report;
+import com.scp.foundation.controllers.account.AccountDto;
+import com.scp.foundation.domains.account.AccountRepository;
+import com.scp.foundation.models.account.Account;
 
 @SpringBootTest
 @ContextConfiguration
 @WebAppConfiguration
-//@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {
-//		"classpath:datasets/integration/integration_test_before.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-//@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {
-//		"classpath:datasets/integration/integration_test_after.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-class ReportControllerTest {
+//@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = { "classpath:datasets/integration/integration_test_before.sql"}, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+//@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {  "classpath:datasets/integration/integration_test_after.sql"}, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+class AccountControllerTest {
 
-	private static final String ENDPOINT = "/reports";
+	private static final String ENDPOINT = "/api/v1/account/accounts";
 
 	@Autowired
 	private WebApplicationContext context;
@@ -42,24 +40,24 @@ class ReportControllerTest {
 	private MockMvc mockMvc;
 
 	@Mock
-	private ReportRepository reportRepository;
+	private AccountRepository accountRepository;
 
 	@InjectMocks
-	private ReportDto reporttDTO;
+	private AccountDto accountDTO;
 
 	@BeforeEach
 	public void init() throws Exception {
-		// Report report = new Report();
+		// Account account = new Account();
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
 //	@Test
 //	void getAccountWhenExists() throws Exception {
-//		String name = "test";
+//		String username = "test";
 //
-//		mockMvc.perform(get(new StringBuilder(ENDPOINT).append(name).toString()))
+//		mockMvc.perform(get(new StringBuilder(ENDPOINT).append(username).toString()))
 //
-//				.andExpect(status().isOk()).andExpect(jsonPath("username").value(name))
+//				.andExpect(status().isOk()).andExpect(jsonPath("username").value(username))
 //				.andExpect(jsonPath("username").value("test"));
 //	}
 

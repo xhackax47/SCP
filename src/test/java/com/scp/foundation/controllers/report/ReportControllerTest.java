@@ -1,4 +1,4 @@
-package com.scp.foundation.controllers;
+package com.scp.foundation.controllers.report;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,9 +21,9 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.scp.foundation.controllers.scp.dto.SafeSCPDto;
-import com.scp.foundation.domains.scp.SafeSCPRepository;
-import com.scp.foundation.models.scp.SafeSCP;
+import com.scp.foundation.controllers.report.ReportDto;
+import com.scp.foundation.domains.report.ReportRepository;
+import com.scp.foundation.models.report.Report;
 
 @SpringBootTest
 @ContextConfiguration
@@ -32,9 +32,9 @@ import com.scp.foundation.models.scp.SafeSCP;
 //		"classpath:datasets/integration/integration_test_before.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
 //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {
 //		"classpath:datasets/integration/integration_test_after.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-class SCPControllerTest {
+class ReportControllerTest {
 
-	private static final String ENDPOINT = "/scps";
+	private static final String ENDPOINT = "/reports";
 
 	@Autowired
 	private WebApplicationContext context;
@@ -42,14 +42,14 @@ class SCPControllerTest {
 	private MockMvc mockMvc;
 
 	@Mock
-	private SafeSCPRepository scpRepository;
+	private ReportRepository reportRepository;
 
 	@InjectMocks
-	private SCPDto scpDTO;
+	private ReportDto reporttDTO;
 
 	@BeforeEach
 	public void init() throws Exception {
-		SafeSCP scp = new SafeSCP();
+		// Report report = new Report();
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
@@ -59,7 +59,7 @@ class SCPControllerTest {
 //
 //		mockMvc.perform(get(new StringBuilder(ENDPOINT).append(name).toString()))
 //
-//				.andExpect(status().isOk()).andExpect(jsonPath("name").value(name))
+//				.andExpect(status().isOk()).andExpect(jsonPath("username").value(name))
 //				.andExpect(jsonPath("username").value("test"));
 //	}
 

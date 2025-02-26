@@ -1,4 +1,4 @@
-package com.scp.foundation.controllers;
+package com.scp.foundation.controllers.scp;
 
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,18 +21,21 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.scp.foundation.controllers.account.AccountDto;
-import com.scp.foundation.domains.account.AccountRepository;
-import com.scp.foundation.models.account.Account;
+import com.scp.foundation.controllers.SCPDto;
+import com.scp.foundation.controllers.scp.dto.SafeSCPDto;
+import com.scp.foundation.domains.scp.SafeSCPRepository;
+import com.scp.foundation.models.scp.SafeSCP;
 
 @SpringBootTest
 @ContextConfiguration
 @WebAppConfiguration
-//@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = { "classpath:datasets/integration/integration_test_before.sql"}, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-//@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {  "classpath:datasets/integration/integration_test_after.sql"}, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-class AccountControllerTest {
+//@Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {
+//		"classpath:datasets/integration/integration_test_before.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+//@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {
+//		"classpath:datasets/integration/integration_test_after.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
+class SafeSCPControllerTest {
 
-	private static final String ENDPOINT = "/api/v1/account/accounts";
+	private static final String ENDPOINT = "/scps";
 
 	@Autowired
 	private WebApplicationContext context;
@@ -40,24 +43,24 @@ class AccountControllerTest {
 	private MockMvc mockMvc;
 
 	@Mock
-	private AccountRepository accountRepository;
+	private SafeSCPRepository scpRepository;
 
 	@InjectMocks
-	private AccountDto accountDTO;
+	private SCPDto scpDTO;
 
 	@BeforeEach
 	public void init() throws Exception {
-		// Account account = new Account();
+		SafeSCP scp = new SafeSCP();
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
 //	@Test
 //	void getAccountWhenExists() throws Exception {
-//		String username = "test";
+//		String name = "test";
 //
-//		mockMvc.perform(get(new StringBuilder(ENDPOINT).append(username).toString()))
+//		mockMvc.perform(get(new StringBuilder(ENDPOINT).append(name).toString()))
 //
-//				.andExpect(status().isOk()).andExpect(jsonPath("username").value(username))
+//				.andExpect(status().isOk()).andExpect(jsonPath("name").value(name))
 //				.andExpect(jsonPath("username").value("test"));
 //	}
 
