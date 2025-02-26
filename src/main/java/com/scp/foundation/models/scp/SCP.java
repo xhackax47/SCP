@@ -1,26 +1,25 @@
 package com.scp.foundation.models.scp;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.Objects;
 
-@Entity
-public sealed class SCP permits AppolyonSCP, EuclidSCP, KeterSCP, SureSCP, ThaumielSCP {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
-	private String name;
-	private String description;
-	
-    public SCP(){
-    	super();
-    }
+import com.scp.foundation.enums.securitylevels.SCPSecurityLevel;
 
-	public SCP(String name, String description) {
+public sealed class SCP permits AppolyonSCP, EuclidSCP, KeterSCP, SafeSCP, ThaumielSCP {
+	protected Long id;
+	protected String name;
+	protected String description;
+	protected SCPSecurityLevel securityLevel;
+
+	public SCP() {
 		super();
+	}
+
+	public SCP(Long id, String name, String description, SCPSecurityLevel securityLevel) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.securityLevel = securityLevel;
 	}
 	
 	public Long getId() {
@@ -41,5 +40,36 @@ public sealed class SCP permits AppolyonSCP, EuclidSCP, KeterSCP, SureSCP, Thaum
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public SCPSecurityLevel getSecurityLevel() {
+		return securityLevel;
+	}
+
+	public void setSecurityLevel(SCPSecurityLevel securityLevel) {
+		this.securityLevel = securityLevel;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(description, name, securityLevel);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SCP other = (SCP) obj;
+		return Objects.equals(description, other.description) && Objects.equals(name, other.name)
+				&& securityLevel == other.securityLevel;
+	}
+
+	@Override
+	public String toString() {
+		return "SCP [name=" + name + ", description=" + description + ", securityLevel=" + securityLevel + "]";
 	}
 }

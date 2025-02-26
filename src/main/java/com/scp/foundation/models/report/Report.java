@@ -1,6 +1,6 @@
-package com.scp.foundation.models;
+package com.scp.foundation.models.report;
 
-import com.scp.foundation.enums.AccountSecurityLevel;
+import com.scp.foundation.enums.securitylevels.AccountSecurityLevel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,10 +15,10 @@ public class Report {
 	private String name;
 	private String description;
 	private AccountSecurityLevel securityLevel;
-	
-    public Report(){
-    	super();
-    }
+
+	public Report() {
+		super();
+	}
 
 	public Report(String name, String description, AccountSecurityLevel securityLevel) {
 		super();
@@ -26,7 +26,7 @@ public class Report {
 		this.description = description;
 		this.securityLevel = securityLevel;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}

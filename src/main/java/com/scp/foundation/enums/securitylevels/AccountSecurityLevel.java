@@ -1,4 +1,4 @@
-package com.scp.foundation.enums;
+package com.scp.foundation.enums.securitylevels;
 
 public enum AccountSecurityLevel {
 	CLASSE_D,

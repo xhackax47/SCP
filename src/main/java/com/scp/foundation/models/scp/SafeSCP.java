@@ -8,21 +8,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public final class KeterSCP extends SCP {
-
+public final class SafeSCP extends SCP {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	public KeterSCP() {
+	public SafeSCP() {
 		super();
 	}
 
-	public KeterSCP(String name, String description, SCPSecurityLevel securityLevel) {
+	public SafeSCP(String name, String description, SCPSecurityLevel securityLevel) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.securityLevel = securityLevel;
 	}
-
 }
