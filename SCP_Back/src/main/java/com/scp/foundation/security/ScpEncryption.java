@@ -9,11 +9,14 @@ import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public class ScpEncryption {
 	
 	private static SecretKeySpec secretKey;
 	private static byte[] key;
-	private static final String AES_ALGORITHM = "AES";
+	@Value("${ALGO_CRYPT}")
+	private static String ALGORITHM;
 	
 	
 	private ScpEncryption() {
@@ -27,7 +30,7 @@ public class ScpEncryption {
             sha = MessageDigest.getInstance("SHA-1");
             key = sha.digest(key);
             key = Arrays.copyOf(key, 16);
-            secretKey = new SecretKeySpec(key, AES_ALGORITHM);
+            secretKey = new SecretKeySpec(key, ALGORITHM);
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
@@ -36,7 +39,7 @@ public class ScpEncryption {
     public static String encrypt(String strToEncrypt, String secret) {
         try {
             prepareSecreteKey(secret);
-            Cipher cipher = Cipher.getInstance(AES_ALGORITHM);
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
             cipher.init(Cipher.ENCRYPT_MODE, secretKey);
             return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
         } catch (Exception e) {
@@ -48,7 +51,7 @@ public class ScpEncryption {
     public static String decrypt(String strToDecrypt, String secret) {
         try {
             prepareSecreteKey(secret);
-            Cipher cipher = Cipher.getInstance(AES_ALGORITHM);
+            Cipher cipher = Cipher.getInstance(ALGORITHM);
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
             return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
         } catch (Exception e) {
