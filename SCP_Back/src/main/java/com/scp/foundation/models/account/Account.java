@@ -12,18 +12,20 @@ public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String defaultEmail;
-	private String userName;
-	private AccountSecurityLevel status;
+	protected String defaultEmail;
+	protected String userName;
+	protected String password;
+	protected AccountSecurityLevel securityLevel;
 
 	public Account() {
 		super();
 	}
 
-	public Account(String defaultEmail, String userName, AccountSecurityLevel status) {
+	public Account(String defaultEmail, String userName, String password, AccountSecurityLevel securityLevel) {
 		this.defaultEmail = defaultEmail;
 		this.userName = userName;
-		this.status = status;
+		this.password = password;
+		this.securityLevel = securityLevel;
 	}
 
 	public Long getId() {
@@ -46,15 +48,23 @@ public class Account {
 		this.userName = userName;
 	}
 
-	public AccountSecurityLevel getStatus() {
-		return status;
+	public String getPassword() {
+		return password;
 	}
 
-	public String getStatusName() {
-		return status.toString();
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public void setStatus(AccountSecurityLevel status) {
-		this.status = status;
+	public AccountSecurityLevel getSecurityLevel() {
+		return securityLevel;
+	}
+
+	public String getSecurityLevelName() {
+		return securityLevel.toString();
+	}
+
+	public void setSecurityLevel(AccountSecurityLevel securityLevel) {
+		this.securityLevel = securityLevel;
 	}
 }

@@ -1,4 +1,4 @@
-package com.scp.foundation;
+package com.scp.foundation.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
