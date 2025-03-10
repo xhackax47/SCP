@@ -1,46 +1,48 @@
 <header>
-  <div class="navmenu">
-      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
-          <div class="container-fluid">
-              <a class="navbar-brand" href="/home">SCP</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                  data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                  aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                          <a class="nav-link" routerLink="/login">Se connecter</a>
-                      </li>
-                      <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                              aria-expanded="false">
-                              Fondation SCP
-                          </a>
-                          <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" routerLink="/scps">Liste des SCP</a></li>
-                              <li><a class="dropdown-item" routerLink="/reports">Rapports SCP</a></li>
-                          <li>
-                              <hr class="dropdown-divider">
-                          </li>
-                              <li><a class="dropdown-item" routerLink="/foundation">Informations Fondation SCP</a></li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Exemple : SCP-173"
-                          aria-label="Recherche">
-                      <button class="btn btn-outline-success" type="submit">Recherche</button>
-                  </form>
-              </div>
-          </div>
-      </nav>
-  </div>
+    <div class="navmenu">
+        <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/home">SCP</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/login">Se connecter</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Fondation SCP
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" routerLink="/scps">Liste des SCP</a></li>
+                                <li><a class="dropdown-item" routerLink="/reports">Rapports SCP</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" routerLink="/foundation">Informations Fondation SCP</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Exemple : SCP-173"
+                            aria-label="Recherche">
+                        <button class="btn btn-outline-success" type="submit">Recherche</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </div>
 </header>
 <div class="title">
-  <img class="logo"
-      src="../../ui/assets/logo_scp.webp"
-      alt="Logo SCP">
-  <br />
+    <img class="logo"
+        src="https://preview.redd.it/b2azgsp6v7n31.jpg?auto=webp&s=1caaea5c783bdc4f27043c03beb39173d175f35c"
+        alt="Logo SCP">
+    <br />
 </div>
+<app-home></app-home>
