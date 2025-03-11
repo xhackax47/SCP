@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { NgModel, FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: 'login/login.component.html',
   styleUrl: 'login/login.component.less'
 })
@@ -20,7 +21,6 @@ export class LoginComponent implements OnInit {
   loginSuccess = false;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private authenticationService: AuthService) { }
 
@@ -28,14 +28,15 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((result) => {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage = 'Informations d\'identification valides - DESACTIVATION DE LA SECURITE PAR AGENT SCP MEMETIQUE';
-      this.router.navigate(['/home']);
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-    });
+    this.authenticationService.authenticationService(this.username, this.password).subscribe(
+      (result) => {
+        this.invalidLogin = false;
+        this.loginSuccess = true;
+        this.successMessage = 'Informations d\'identification valides - DESACTIVATION DE LA SECURITE PAR AGENT SCP MEMETIQUE';
+        this.router.navigate(['/home']);
+      }, () => {
+        this.invalidLogin = true;
+        this.loginSuccess = false;
+      });
   }
 }
