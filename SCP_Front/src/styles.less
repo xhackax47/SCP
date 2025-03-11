@@ -5,29 +5,243 @@
     display: flex;
     justify-content: center;
     margin: 3%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5rem;
+    color: #00FF00;  /* Vert "terminal" pour un effet informatique */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);  /* Effet de lumière fluo */
 }
 
 .intro-rp {
     font-style: italic;
     margin: 3%;
-
+    font-family: 'Lucida Console', Monaco, monospace;
+    color: #b0b0b0;
+    font-size: 1.2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #00FF00;
 }
 
 .description-rp {
     margin: 1%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    line-height: 1.6;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #00FF00;
 }
 
 /* Global */
+body {
+    background-color: #121212;  /* Fond sombre pour l'ambiance SCP */
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+    background: url('https://www.scp-wiki.net/images/scp-logo.png') no-repeat center center fixed;
+    background-size: cover;
+}
 
 h2 {
     font-weight: bold;
     text-decoration: underline;
+    color: #00FF00;  /* Vert pour rappeler l'univers technologique */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Légère ombre pour effet high-tech */
+    font-size: 2rem;
+}
+
+h1, h3, h4, h5 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #00FF00;  /* Vert pour les titres */
 }
 
 footer {
-    background-color: black; 
-    color: antiquewhite;
-    text-align: center; 
+    background-color: #222222;  /* Noir/Gris pour un fond plus sobre */
+    color: #b0b0b0;  /* Gris clair pour un contraste subtil */
+    text-align: center;
     position: fixed;
     bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+}
+
+/* Pour les formulaires */
+input, select, button {
+    background-color: #2c2c2c;
+    border: 1px solid #00FF00;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+input:focus, select:focus, button:focus {
+    outline: none;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+button {
+    background-color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #00FF00;  /* Vert pour le survol, style SCP */
+    color: #121212;
+}
+
+/* Ajout de transition pour une meilleure animation */
+input, select, button {
+    transition: all 0.3s ease;
+}
+
+a {
+    color: #00FF00;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #b0b0b0;
+    text-decoration: underline;
+}
+
+/* Style de bloc d'alerte ou d'informations */
+.alert {
+    background-color: #ff1a1a;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+th {
+    background-color: #333;
+    color: #00FF00;
+}
+
+td {
+    background-color: #222;
+    color: #b0b0b0;
+}
+
+/* Animation pour des effets mystérieux */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Effet de "flicker" pour le titre ou certains éléments */
+.title {
+    animation: flicker 1.5s infinite;
+}
+
+/* Partie Login */
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  /* Prend toute la hauteur de l'écran */
+    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
+}
+
+.container {
+    background-color: #222222;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #00FF00;
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.1rem;
+    color: #00FF00;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #00FF00;
+    border-radius: 5px;
+}
+
+input:focus {
+    border-color: #00FF00;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00FF00;
+    color: #121212;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b0b0b0;
+    color: #121212;
+}
+
+.alert {
+    margin-bottom: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Pour les alertes de connexion */
+.alert-warning {
+    background-color: #ffcc00;
+    color: black;
+}
+
+.alert-success {
+    background-color: #00ff00;
+    color: black;
 }
