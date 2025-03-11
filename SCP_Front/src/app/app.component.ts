@@ -1,18 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { RouterModule } from '@angular/router'; // Importer RouterModule
 
 @Component({
   selector: 'app-root',
-  standalone: true,  // ✅ Important pour un Standalone Component !
-  imports: [RouterLink, 
-    RouterOutlet, 
-    HomeComponent,
-  ],
+  standalone: true,
+  imports: [RouterModule],  // Ajouter RouterModule ici
   templateUrl: './app.component.html',
-  styleUrl: './app.component.less'
+  styleUrls: ['./app.component.less']
 })
-
 export class AppComponent {
-  title = 'SCP Foundation';
+  title = 'SCP Application';
 }
