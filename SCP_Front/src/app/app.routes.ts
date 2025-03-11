@@ -7,8 +7,8 @@ import { ErrorHandler, inject } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-    { path: '', redirectTo: 'home', pathMatch: 'full' },
-    { path: 'home', component: HomeComponent },
+    { path: '', component: HomeComponent },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LoginComponent },
     { path: 'scps', component: ScpComponent },
