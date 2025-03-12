@@ -34,6 +34,7 @@ public class AccountController {
 	}
 
 	// Permet de créer un compte
+    @CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("/account")
 	public AccountDto createAccount(@RequestBody AccountDto accountDto) {
 		Account account = accountRepository

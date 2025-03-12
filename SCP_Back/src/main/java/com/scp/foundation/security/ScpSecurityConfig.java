@@ -23,7 +23,7 @@ public class ScpSecurityConfig {
     protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/api/v1/basicauth").permitAll() // Permet l'accès à /api/v1/basicauth sans authentification
+                .requestMatchers("/auth", "/account").permitAll() // Permet l'accès à /basicauth et /account sans authentification
                 .anyRequest().authenticated()  // Toutes les autres requêtes nécessitent une authentification
             )
             .csrf(csrf -> csrf.disable());  // Désactive la protection CSRF (à utiliser pour des API REST)

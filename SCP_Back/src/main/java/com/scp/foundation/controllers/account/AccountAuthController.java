@@ -8,7 +8,6 @@ import com.scp.foundation.models.account.LoginRequest;
 import com.scp.foundation.security.JwtUtil;
 
 @RestController
-@RequestMapping("/api/v1")
 public class AccountAuthController {
 
     private final AccountService accountService;
@@ -20,6 +19,7 @@ public class AccountAuthController {
     }
 
     // Endpoint pour l'authentification
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping("/auth")
     public String authenticate(@RequestBody LoginRequest loginRequest) {
         // Appel à la méthode d'authentification
