@@ -5,16 +5,17 @@ import { ScpComponent } from './scp/scp.component';
 import { FoundationComponent } from './foundation/foundation.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { AuthGuard } from './login/auth.guard';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard]  },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LoginComponent },
-    { path: 'scps', component: ScpComponent },
-    { path: 'reports', component: ReportComponent },
-    { path: 'foundation', component: FoundationComponent },
+    { path: 'scps', component: ScpComponent, canActivate: [AuthGuard] },
+    { path: 'reports', component: ReportComponent, canActivate: [AuthGuard] },
+    { path: 'foundation', component: FoundationComponent, canActivate: [AuthGuard] },
     /*
     //{ path: '**', component: PageNotFoundComponent },  // Wildcard route for a 404 page
     {
