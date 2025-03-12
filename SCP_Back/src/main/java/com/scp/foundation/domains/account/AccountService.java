@@ -16,10 +16,12 @@ public class AccountService implements UserDetailsService {
     @Value("${SECRET_KEY}")
     private String secretKey;
 
+	private final ScpEncryption scpEncryption;
     private final AccountRepository accountRepository;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, ScpEncryption scpEncryption) {
         this.accountRepository = accountRepository;
+        this.scpEncryption = scpEncryption;
     }
 
     // Méthode d'authentification avec décryptage du mot de passe
@@ -28,7 +30,7 @@ public class AccountService implements UserDetailsService {
         Account account = accountRepository.findByUserName(username);
         if (account != null) {
             // Utilisation de ScpEncryption pour décryptage du mot de passe
-            String decryptedPassword = ScpEncryption.decrypt(account.getPassword(), secretKey);
+        	String decryptedPassword = scpEncryption.decrypt(account.getPassword(), secretKey);
             
             // Comparaison du mot de passe fourni avec le mot de passe décrypté
             if (password.equals(decryptedPassword)) {
