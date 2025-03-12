@@ -8,11 +8,11 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './login/auth.guard';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard]  },
-    { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LoginComponent },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard]  },
+    { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'scps', component: ScpComponent, canActivate: [AuthGuard] },
     { path: 'reports', component: ReportComponent, canActivate: [AuthGuard] },
     { path: 'foundation', component: FoundationComponent, canActivate: [AuthGuard] },

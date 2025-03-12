@@ -4,11 +4,12 @@
 .title {
     display: flex;
     justify-content: center;
-    margin: 3%;
+    //margin: 3%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 2.5rem;
-    color: #00FF00;  /* Vert "terminal" pour un effet informatique */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);  /* Effet de lumière fluo */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #00FF00;  // Vert "terminal" pour un effet informatique
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);  // Effet de lumière fluo
 }
 
 .intro-rp {
@@ -33,6 +34,11 @@
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #00FF00;
+}
+
+.logo-nav {
+    width: 30px;
+    height: 30px;
 }
 
 /* Global */
@@ -147,25 +153,26 @@ td {
     background-color: #222;
     color: #b0b0b0;
 }
-
-/* Animation pour des effets mystérieux */
+/*
+// Animation pour des effets mystérieux
 @keyframes flicker {
     0% { opacity: 1; }
     50% { opacity: 0.6; }
     100% { opacity: 1; }
 }
 
-/* Effet de "flicker" pour le titre ou certains éléments */
+// Effet de "flicker" pour le titre ou certains éléments
 .title {
     animation: flicker 1.5s infinite;
 }
+*/
 
 /* Partie Login */
 .login {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;  /* Prend toute la hauteur de l'écran */
+    height: 90VH;  /* Prend toute la hauteur de l'écran */
     background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
 }
 
@@ -263,4 +270,3 @@ button:hover {
     background-color: #00ff00;
     color: black;
 }
-
