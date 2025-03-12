@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleLogin() {
+  login() {
     this.authenticationService.authenticationService(this.username, this.password).subscribe({
       next: (response) => {
         this.invalidLogin = false;

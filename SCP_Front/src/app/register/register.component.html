@@ -1,0 +1,42 @@
+<main class="register">
+    <div class="container col-lg-6">
+      <h1 class="text-center">Inscription</h1>
+      <div class="card">
+        <div class="card-body">
+          <form class="form-group">
+            <div class="alert alert-danger" *ngIf='registerError'>{{errorMessage}}</div>
+            <div class="alert alert-success" *ngIf='registerSuccess'>{{successMessage}}</div>
+            
+            <div class="form-group">
+              <label for="username">Nom d'utilisateur :</label>
+              <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Nom d'utilisateur SCP" name="username">
+            </div>
+  
+            <div class="form-group">
+              <label for="email">Email :</label>
+              <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Email SCP" name="email">
+            </div>
+  
+            <div class="form-group">
+              <label for="password">Mot de passe :</label>
+              <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Mot de passe SCP" name="password">
+            </div>
+  
+            <div class="form-group">
+              <label for="securityLevel">Niveau de sécurité :</label>
+              <select class="form-control" id="securityLevel" [(ngModel)]="securityLevel" name="securityLevel">
+                <option value="0">Niveau 1 - Accès Restreint</option>
+                <option value="1">Niveau 2 - Personnel Autorisé</option>
+                <option value="2">Niveau 3 - Scientifiques et Agents</option>
+                <option value="3">Niveau 4 - Administrateurs</option>
+                <option value="4">Niveau 5 - O5 Council</option>
+              </select>
+            </div>
+  
+            <button (click)="register()" class="btn btn-danger">Créer un compte</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+  

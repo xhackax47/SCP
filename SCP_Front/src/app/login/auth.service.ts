@@ -9,7 +9,7 @@ import { catchError, map, throwError } from 'rxjs';
 export class AuthService {
 
   // URL de base de l'API
-  private apiUrl = 'http://localhost:8080/api/v1/auth'; // URL de ton API
+  private apiUrl = 'http://localhost:8080/auth'; // URL de ton API
   private JWT_TOKEN = 'jwt_token'; // Clé pour stocker le token JWT
   private USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'; // Déclaration de la constante
 
@@ -21,7 +21,7 @@ export class AuthService {
   // Méthode de connexion pour envoyer les informations d'identification et recevoir un JWT
   authenticationService(username: string, password: string) {
     const credentials = { username, password };
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
+    return this.http.post<any>(`${this.apiUrl}`, credentials).pipe(
       map((response) => {
         // Vérification si token existe
         if (!response || !response.token) {

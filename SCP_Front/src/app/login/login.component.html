@@ -1,6 +1,6 @@
 <main class="login">
   <div class="container col-lg-6">
-    <h1 class="text-center">Login</h1>
+    <h1 class="text-center">Accès Restreint</h1>
     <div class="card">
       <div class="card-body">
         <form class="form-group">
@@ -16,7 +16,7 @@
             <input type="password" class="form-control" [(ngModel)]="password" id="password"
               placeholder="Entrer password utilisateur SCP" name="password">
           </div>
-          <button (click)=handleLogin() class="btn btn-success">Connexion</button>
+          <button (click)=login() class="btn btn-success">Connexion</button>
         </form>
       </div>
     </div>

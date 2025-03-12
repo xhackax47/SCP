@@ -3,12 +3,13 @@ import { LoginComponent } from './login/login.component';
 import { ReportComponent } from './report/report.component';
 import { ScpComponent } from './scp/scp.component';
 import { FoundationComponent } from './foundation/foundation.component';
-import { ErrorHandler, inject } from '@angular/core';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
+    { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LoginComponent },
     { path: 'scps', component: ScpComponent },
