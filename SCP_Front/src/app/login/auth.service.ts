@@ -21,21 +21,19 @@ export class AuthService {
   // Méthode de connexion pour envoyer les informations d'identification et recevoir un JWT
   authenticationService(username: string, password: string) {
     const credentials = { username, password };
-    return this.http.post<any>(`${this.apiUrl}`, credentials).pipe(
-      map((response) => {
-        // Vérification si token existe
-        if (!response || !response.token) {
+    return this.http.post(`${this.apiUrl}`, credentials, { responseType: 'text' }).pipe(
+      map((response: string) => {
+        if (!response) {
           console.error('Le token est manquant dans la réponse');
           throw new Error('Token missing from response');
         }
-        this.storeToken(response.token); // Sauvegarde du token dans le localStorage
-        this.registerSuccessfulLogin(username, password); // Enregistrement du login
+        this.storeToken(response);
       }),
       catchError((error) => {
-        console.error('Erreur API :', error); // Log de l'erreur
-        return throwError(error); // Renvoyer l'erreur si elle survient
+        console.error('Erreur API :', error);
+        return throwError(error);
       })
-    );
+    );    
   }
   
   // Sauvegarde du token JWT dans le localStorage

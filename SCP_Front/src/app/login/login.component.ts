@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Importer RouterModule
+import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { FormsModule } from '@angular/forms';  // Assure-toi d'importer FormsModule ici
-import { CommonModule } from '@angular/common'; // Importer CommonModule ici
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  providers: [AuthService],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule], // ✅ Laisse ces imports
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-
 export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
