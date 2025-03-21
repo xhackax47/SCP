@@ -11,7 +11,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/register">Créer un compte</a>
+                            <a class="nav-link" routerLink="/register" *ngIf="!authService.isUserLoggedIn()">Créer un compte</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/login" *ngIf="!authService.isUserLoggedIn()">Se connecter</a>
@@ -21,19 +21,27 @@
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Fondation SCP
+                                aria-expanded="false" *ngIf="authService.isUserLoggedIn()">
+                                Entités SCP
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="/scps">Liste des SCP</a></li>
-                                <li><a class="dropdown-item" routerLink="/reports">Rapports SCP</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" routerLink="/foundation">Informations Fondation SCP</a>
-                                </li>
+                                <li><a class="dropdown-item" routerLink="/scps">Liste des Entités SCP</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" routerLink="/reports">Créer fiche entité SCP</a></li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" *ngIf="authService.isUserLoggedIn()">
+                                Rapports SCP
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" routerLink="/scps">Liste des Rapports</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" routerLink="/reports">Créer un rapport SCP</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" routerLink="/foundation">Informations Fondation</a></li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Exemple : SCP-173"
