@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AuthService {
   private JWT_TOKEN = 'jwt_token'; // Clé pour stocker le token JWT
   private USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'; // Déclaration de la constante
 
-  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(private http: HttpClient) {
     // Ajout d'un log pour voir si HttpClient est bien injecté
     console.log('HttpClient injecté:', this.http);
   }
@@ -53,7 +53,7 @@ export class AuthService {
 
   // Méthode pour récupérer le token JWT depuis le stockage local
   getToken(): string | null {
-    return localStorage.getItem(this.JWT_TOKEN);
+    return this.JWT_TOKEN;
   }
 
   // Méthode pour se déconnecter et supprimer le token JWT
