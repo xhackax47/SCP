@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router'; // Importer RouterModule
+import { Router, RouterModule } from '@angular/router'; // Importer RouterModule
 import { AuthService } from './login/auth.service';
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +15,16 @@ import { CommonModule, NgIf } from '@angular/common';
 })
 
 export class AppComponent {
-  //constructor(private authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   logout() {
-    //this.authService.logout();
+    this.authService.logout();
+    if (!this.authService.isUserLoggedIn()) {
+      console.log('Déconnexion réussie.');
+    } else {
+      console.error('L\'utilisateur est toujours connecté.');
+    }
+    this.router.navigate(['/login']);
   }
   title = 'SCP Application';
 }

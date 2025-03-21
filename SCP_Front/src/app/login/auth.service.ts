@@ -15,7 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     // Ajout d'un log pour voir si HttpClient est bien injecté
-    console.log('HttpClient injecté:', this.http);
+    //console.log('HttpClient injecté:', this.http);
   }
 
   // Méthode de connexion pour envoyer les informations d'identification et recevoir un JWT
@@ -60,6 +60,11 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
     localStorage.removeItem(this.JWT_TOKEN);  // Supprime le token JWT du localStorage
+    if (!localStorage.getItem(this.JWT_TOKEN)) {
+      console.log('Token supprimé avec succès.');
+    } else {
+      console.error('Échec de la suppression du token.');
+    }  
   }
 
   // Méthode pour récupérer le nom de l'utilisateur connecté

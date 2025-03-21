@@ -14,7 +14,10 @@
                             <a class="nav-link" routerLink="/register">Créer un compte</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="/login">Se connecter</a>
+                            <a class="nav-link" routerLink="/login" *ngIf="!authService.isUserLoggedIn()">Se connecter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" (click)="logout()" *ngIf="authService.isUserLoggedIn()">Se déconnecter</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

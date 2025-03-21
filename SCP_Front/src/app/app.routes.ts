@@ -11,7 +11,7 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'logout', component: LoginComponent },
-    { path: '', component: HomeComponent, canActivate: [AuthGuard]  },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'home', redirectTo: '', pathMatch: 'full' },
     { path: 'scps', component: ScpComponent, canActivate: [AuthGuard] },
     { path: 'reports', component: ReportComponent, canActivate: [AuthGuard] },
