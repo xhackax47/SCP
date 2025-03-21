@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScpComponent } from './scp.component';
+import { ReportEditComponent } from './report-edit.component';
 
-describe('ScpComponent', () => {
-  let component: ScpComponent;
-  let fixture: ComponentFixture<ScpComponent>;
+describe('ReportEditComponent', () => {
+  let component: ReportEditComponent;
+  let fixture: ComponentFixture<ReportEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ScpComponent]
+      imports: [ReportEditComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ScpComponent);
+    fixture = TestBed.createComponent(ReportEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

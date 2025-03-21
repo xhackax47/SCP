@@ -24,14 +24,14 @@
     border: 1px solid #00FF00;
 }
 
-.description-rp {
-    margin: 1%;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.1rem;
+.description-foundation-rp {
+    font-style: italic;
+    margin: 10%;
+    font-family: 'Lucida Console', Monaco, monospace;
     color: #b0b0b0;
-    line-height: 1.6;
+    font-size: 1.2rem;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 15px;
+    padding: 10%;
     border-radius: 5px;
     border: 1px solid #00FF00;
 }
@@ -48,7 +48,7 @@ body {
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
-    background: url('https://www.scp-wiki.net/images/scp-logo.png') no-repeat center center fixed;
+    background: url('https://logo-marque.com/wp-content/uploads/2021/10/SCP-Symbole.jpg') no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -129,7 +129,19 @@ a:hover {
     padding: 15px;
     border-radius: 5px;
     margin: 20px 0;
+    margin-bottom: 20px;
     font-family: 'Courier New', Courier, monospace;
+}
+
+/* Pour les alertes de connexion */
+.alert-warning {
+    background-color: #ffcc00;
+    color: black;
+}
+
+.alert-success {
+    background-color: #00ff00;
+    color: black;
 }
 
 /* Pour les tableaux */
@@ -152,46 +164,6 @@ th {
 td {
     background-color: #222;
     color: #b0b0b0;
-}
-/*
-// Animation pour des effets mystérieux
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.6; }
-    100% { opacity: 1; }
-}
-
-// Effet de "flicker" pour le titre ou certains éléments
-.title {
-    animation: flicker 1.5s infinite;
-}
-*/
-
-/* Partie Login */
-.login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90VH;  /* Prend toute la hauteur de l'écran */
-    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
-}
-
-.login, h1 {
-    color: #00FF00;
-}
-
-/* Partie Register */
-
-.register {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;  /* Prend toute la hauteur de l'écran */
-    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
-}
-
-.register, h1 {
-    color: #00FF00;
 }
 
 .container {
@@ -216,7 +188,7 @@ h1 {
 
 label {
     font-size: 1.1rem;
-    color: #00FF00;
+    color: #007e00;
     display: block;
     margin-bottom: 5px;
 }
@@ -255,18 +227,32 @@ button:hover {
     color: #121212;
 }
 
-.alert {
-    margin-bottom: 20px;
-    font-family: 'Courier New', Courier, monospace;
+/* Classes */
+.login, .page404, .home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70VH;  /* Prend toute la hauteur de l'écran */
+    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
 }
 
-/* Pour les alertes de connexion */
-.alert-warning {
-    background-color: #ffcc00;
-    color: black;
+.foundation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
 }
 
-.alert-success {
-    background-color: #00ff00;
-    color: black;
+.login, h1, .register, h1 {
+    color: #00FF00;
+}
+
+/* Register */
+
+.register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;  /* Prend toute la hauteur de l'écran */
+    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
 }

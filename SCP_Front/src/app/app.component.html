@@ -27,7 +27,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" routerLink="/scps">Liste des Entités SCP</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" routerLink="/reports">Créer fiche entité SCP</a></li>
+                                <li><a class="dropdown-item" routerLink="/scp/create">Créer fiche entité SCP</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -36,12 +36,12 @@
                                 Rapports SCP
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" routerLink="/scps">Liste des Rapports</a></li>
+                                <li><a class="dropdown-item" routerLink="/reports">Liste des Rapports</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" routerLink="/reports">Créer un rapport SCP</a></li>
+                                <li><a class="dropdown-item" routerLink="/report/create">Créer un rapport SCP</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" routerLink="/foundation">Informations Fondation</a></li>
+                        <li class="nav-item"><a class="nav-link" routerLink="/foundation" *ngIf="authService.isUserLoggedIn()">Informations Fondation</a></li>
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Exemple : SCP-173"
