@@ -1,6 +1,6 @@
 package com.scp.foundation.models.report;
 
-import com.scp.foundation.enums.securitylevels.AccountSecurityLevel;
+import com.scp.foundation.enums.AccountSecurityLevel;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.scp.foundation.enums.securitylevels;
+package com.scp.foundation.enums;
 
 public enum SCPSecurityLevel {
 	SAFE,

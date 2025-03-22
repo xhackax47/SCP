@@ -22,9 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.scp.foundation.controllers.SCPDto;
-import com.scp.foundation.controllers.scp.dto.SafeSCPDto;
-import com.scp.foundation.domains.scp.SafeSCPRepository;
-import com.scp.foundation.models.scp.SafeSCP;
+import com.scp.foundation.domains.scp.SCPRepository;
+import com.scp.foundation.models.scp.SCP;
 
 @SpringBootTest
 @ContextConfiguration
@@ -33,7 +32,7 @@ import com.scp.foundation.models.scp.SafeSCP;
 //		"classpath:datasets/integration/integration_test_before.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
 //@Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {
 //		"classpath:datasets/integration/integration_test_after.sql" }, config = @SqlConfig(transactionMode = SqlConfig.TransactionMode.ISOLATED))
-class SafeSCPControllerTest {
+class SCPControllerTest {
 
 	private static final String ENDPOINT = "/scps";
 
@@ -43,14 +42,14 @@ class SafeSCPControllerTest {
 	private MockMvc mockMvc;
 
 	@Mock
-	private SafeSCPRepository scpRepository;
+	private SCPRepository scpRepository;
 
 	@InjectMocks
 	private SCPDto scpDTO;
 
 	@BeforeEach
 	public void init() throws Exception {
-		SafeSCP scp = new SafeSCP();
+		SCP scp = new SCP();
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
 
