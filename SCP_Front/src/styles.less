@@ -12,26 +12,15 @@
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);  // Effet de lumière fluo
 }
 
-.intro-rp {
+.intro-rp, .description-foundation-rp {
     font-style: italic;
+    text-align: center;
     margin: 3%;
     font-family: 'Lucida Console', Monaco, monospace;
     color: #b0b0b0;
     font-size: 1.2rem;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #00FF00;
-}
-
-.description-foundation-rp {
-    font-style: italic;
-    margin: 10%;
-    font-family: 'Lucida Console', Monaco, monospace;
-    color: #b0b0b0;
-    font-size: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 10%;
     border-radius: 5px;
     border: 1px solid #00FF00;
 }
@@ -60,9 +49,11 @@ h2 {
     font-size: 2rem;
 }
 
-h1, h3, h4, h5 {
-    font-family: 'Courier New', Courier, monospace;
-    color: #00FF00;  /* Vert pour les titres */
+h3 {
+    font-weight: bold;
+    color: #00FF00;  /* Vert pour rappeler l'univers technologique */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);  /* Légère ombre pour effet high-tech */
+    font-size: 2rem;
 }
 
 footer {
@@ -228,15 +219,7 @@ button:hover {
 }
 
 /* Classes */
-.login, .page404, .home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 70VH;  /* Prend toute la hauteur de l'écran */
-    background-color: rgba(0, 0, 0, 0.8);  /* Fond sombre pour l'ambiance SCP */
-}
-
-.foundation {
+.login, .page404, .home, .foundation {
     display: flex;
     justify-content: center;
     align-items: center;

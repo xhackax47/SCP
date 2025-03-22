@@ -1,33 +1,35 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-// import { Scp } from '../models/scp.model';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SCP } from '../models/scp.model';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class ScpService {
-//   private apiUrl = 'http://localhost:8100/scps';
+@Injectable({
+  providedIn: 'root'
+})
 
-//   constructor(private http: HttpClient) { }
+export class ScpService {
+  private apiUrlGetScps = 'http://localhost:8080/scps';
+  private apiUrlCreateDeleteUpdateGetScpByID = 'http://localhost:8080/scp';
 
-//   getAllScps(): Observable<Scp[]> {
-//     return this.http.get<Scp[]>(`${this.apiUrl}`);
-//   }
+  constructor(private http: HttpClient) { }
 
-//   getScpById(id: number): Observable<Scp> {
-//     return this.http.get<Scp>(`${this.apiUrl}/${id}`);
-//   }
+  getAllScps(): Observable<SCP[]> {
+    return this.http.get<SCP[]>(`${this.apiUrlGetScps}`);
+  }
 
-//   createScp(scp: Scp): Observable<Scp> {
-//     return this.http.post<Scp>(this.apiUrl, scp);
-//   }
+  getScpById(id: number): Observable<SCP> {
+    return this.http.get<SCP>(`${this.apiUrlCreateDeleteUpdateGetScpByID}/${id}`);
+  }
 
-//   updateScp(id: number, scp: Scp): Observable<Scp> {
-//     return this.http.put<Scp>(`${this.apiUrl}/${id}`, scp);
-//   }
+  createScp(scp: SCP): Observable<SCP> {
+    return this.http.post<SCP>(this.apiUrlCreateDeleteUpdateGetScpByID, scp);
+  }
 
-//   deleteScp(id: number): Observable<void> {
-//     return this.http.delete<void>(`${this.apiUrl}/${id}`);
-//   }
-// }
+  updateScp(id: number, scp: SCP): Observable<SCP> {
+    return this.http.put<SCP>(`${this.apiUrlCreateDeleteUpdateGetScpByID}/${id}`, scp);
+  }
+
+  deleteScp(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrlCreateDeleteUpdateGetScpByID}/${id}`);
+  }
+}
