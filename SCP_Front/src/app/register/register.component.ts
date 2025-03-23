@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Importer CommonModule ici
 
 @Component({
@@ -35,7 +35,7 @@ export class RegisterComponent {
         this.registerSuccess = true;
         this.successMessage = 'Compte créé avec succès !';
         this.errorMessage = '';
-        setTimeout(() => this.router.navigate(['/login']), 2000);
+        setTimeout(() => this.router.navigate(['/login']), 1000);
       },
       error: (error) => {
         this.registerSuccess = false;

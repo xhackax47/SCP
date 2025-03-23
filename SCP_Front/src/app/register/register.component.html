@@ -1,42 +1,67 @@
 <main class="register">
-    <div class="container col-lg-6">
-      <h1 class="text-center">Inscription</h1>
-      <div class="card">
-        <div class="card-body">
-          <form class="form-group">
-            <div class="alert alert-danger" *ngIf='registerError'>{{errorMessage}}</div>
-            <div class="alert alert-success" *ngIf='registerSuccess'>{{successMessage}}</div>
-            
-            <div class="form-group">
-              <label for="username">Nom d'utilisateur :</label>
-              <input type="text" class="form-control" id="username" [(ngModel)]="username" placeholder="Nom d'utilisateur SCP" name="username">
+  <div class="container col-lg-6">
+    <h1 class="text-center">Inscription</h1>
+    <div class="card">
+      <div class="card-body">
+        <form class="form-group" #formRef="ngForm">
+          <div class="alert alert-danger" *ngIf='registerError'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='registerSuccess'>{{successMessage}}</div>
+
+          <div class="form-group">
+            <label for="username">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="username" #usernameRef="ngModel"
+              placeholder="Nom d'utilisateur SCP" name="username" required minlength="4" maxlength="30">
+              <div *ngIf="usernameRef.invalid && usernameRef.touched">
+                <p *ngIf="usernameRef.errors?.['required']">Le nom d'utilisateur est obligatoire</p>
+                <p *ngIf="usernameRef.errors?.['minlength']">Le nom d'utilisateur est trop court (4 caractères min.)</p>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Fondation SCP</label>
+            <input type="email" class="form-control" id="email" pattern=".+@fondation-scp\.com" [(ngModel)]="email" #emailRef="ngModel"
+              placeholder="Email SCP" name="email" required>
+              <div *ngIf="emailRef.invalid && emailRef.touched">
+                <p *ngIf="emailRef.errors?.['required']">L'adresse email est obligatoire</p>
+                <p *ngIf="emailRef.errors?.['pattern']">L'adresse email n'est pas une adresse SCP</p>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" class="form-control" id="password" [(ngModel)]="password" #passwordRef="ngModel"
+              placeholder="Mot de passe SCP" name="password" required minlength="12" maxlength="30">
+              <div *ngIf="passwordRef.invalid && passwordRef.touched">
+                <p *ngIf="passwordRef.errors?.['required']">Le mot de passe est obligatoire</p>
+                <p *ngIf="passwordRef.errors?.['minlength']">Le mot de passe est trop court (12 caractères min.)</p>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="securityLevel">Niveau de sécurité</label>
+            <br />
+            <b>(certains sont soumis à validation O5)</b>
+            <select #securityLevel class="form-control" id="securityLevel" [(ngModel)]="securityLevel" #securityLevelRef="ngModel"
+              name="securityLevel" aria-label="Exemple" required>
+              <option value="0">Niveau 1 - Accès Restreint</option>
+              <option value="1">Niveau 2 - Personnel Autorisé</option>
+              <option value="2">Niveau 3 - Scientifiques et Agents</option>
+              <option value="3">Niveau 4 - Administrateurs</option>
+              <option value="4">Niveau 5 - O5</option>
+            </select>
+            <p *ngIf="securityLevel.value == '0'"><b>Classe D</b></p>
+            <p *ngIf="securityLevel.value == '1'"><b>Classe C</b></p>
+            <p *ngIf="securityLevel.value == '2'"><b>Classe B</b></p>
+            <p *ngIf="securityLevel.value == '3'"><b>Classe A</b></p>
+            <p *ngIf="securityLevel.value == '4'"><b>Membre du conseil O5</b></p>
+            <div *ngIf="securityLevelRef.invalid && securityLevelRef.touched">
+              <p *ngIf="securityLevelRef.errors">Le mot de passe est obligatoire</p>
             </div>
-  
-            <div class="form-group">
-              <label for="email">Email :</label>
-              <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Email SCP" name="email">
-            </div>
-  
-            <div class="form-group">
-              <label for="password">Mot de passe :</label>
-              <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Mot de passe SCP" name="password">
-            </div>
-  
-            <div class="form-group">
-              <label for="securityLevel">Niveau de sécurité :</label>
-              <select class="form-control" id="securityLevel" [(ngModel)]="securityLevel" name="securityLevel">
-                <option value="0">Niveau 1 - Accès Restreint</option>
-                <option value="1">Niveau 2 - Personnel Autorisé</option>
-                <option value="2">Niveau 3 - Scientifiques et Agents</option>
-                <option value="3">Niveau 4 - Administrateurs</option>
-                <option value="4">Niveau 5 - O5 Council</option>
-              </select>
-            </div>
-  
-            <button (click)="register()" class="btn btn-danger">Créer un compte</button>
-          </form>
-        </div>
+          </div>
+
+          <button (click)="register()" class="btn btn-danger">Créer un compte</button>
+        </form>
       </div>
     </div>
-  </main>
-  
+  </div>
+</main>
