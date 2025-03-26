@@ -3,63 +3,61 @@
     <h1 class="text-center">Inscription</h1>
     <div class="card">
       <div class="card-body">
-        <form class="form-group" #formRef="ngForm">
-          <div class="alert alert-danger" *ngIf='registerError'>{{errorMessage}}</div>
-          <div class="alert alert-success" *ngIf='registerSuccess'>{{successMessage}}</div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="alert alert-danger" *ngIf="registerError">{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf="registerSuccess">{{successMessage}}</div>
 
           <div class="form-group">
             <label for="username">Nom d'utilisateur</label>
-            <input type="text" class="form-control" id="username" [(ngModel)]="username" #usernameRef="ngModel"
-              placeholder="Nom d'utilisateur SCP" name="username" required minlength="4" maxlength="30">
-              <div *ngIf="usernameRef.invalid && usernameRef.touched">
-                <p *ngIf="usernameRef.errors?.['required']">Le nom d'utilisateur est obligatoire</p>
-                <p *ngIf="usernameRef.errors?.['minlength']">Le nom d'utilisateur est trop court (4 caractères min.)</p>
-              </div>
+            <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nom d'utilisateur SCP">
+            <div *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+              <p *ngIf="registerForm.get('username')?.errors?.['required']">Le nom d'utilisateur est obligatoire</p>
+              <p *ngIf="registerForm.get('username')?.errors?.['minlength']">Le nom d'utilisateur est trop court (4 caractères min.)</p>
+              <p *ngIf="registerForm.get('username')?.errors?.['usernameTaken']">Ce nom d'utilisateur est déjà pris</p>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="email">Email Fondation SCP</label>
-            <input type="email" class="form-control" id="email" pattern=".+@fondation-scp\.com" [(ngModel)]="email" #emailRef="ngModel"
-              placeholder="Email SCP" name="email" required>
-              <div *ngIf="emailRef.invalid && emailRef.touched">
-                <p *ngIf="emailRef.errors?.['required']">L'adresse email est obligatoire</p>
-                <p *ngIf="emailRef.errors?.['pattern']">L'adresse email n'est pas une adresse SCP</p>
-              </div>
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email SCP">
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+              <p *ngIf="registerForm.get('email')?.errors?.['required']">L'adresse email est obligatoire</p>
+              <p *ngIf="registerForm.get('email')?.errors?.['email']">L'adresse email n'est pas une adresse de la fondation SCP</p>
+              <p *ngIf="registerForm.get('email')?.errors?.['emailTaken']">Cette adresse email est déjà utilisée</p>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="password">Mot de passe</label>
-            <input type="password" class="form-control" id="password" [(ngModel)]="password" #passwordRef="ngModel"
-              placeholder="Mot de passe SCP" name="password" required minlength="12" maxlength="30">
-              <div *ngIf="passwordRef.invalid && passwordRef.touched">
-                <p *ngIf="passwordRef.errors?.['required']">Le mot de passe est obligatoire</p>
-                <p *ngIf="passwordRef.errors?.['minlength']">Le mot de passe est trop court (12 caractères min.)</p>
-              </div>
+            <input type="password" class="form-control" id="password" formControlName="password" placeholder="Mot de passe SCP">
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+              <p *ngIf="registerForm.get('password')?.errors?.['required']">Le mot de passe est obligatoire</p>
+              <p *ngIf="registerForm.get('password')?.errors?.['minlength']">Le mot de passe est trop court (12 caractères min.)</p>
+            </div>
           </div>
 
           <div class="form-group">
             <label for="securityLevel">Niveau de sécurité</label>
             <br />
             <b>(certains sont soumis à validation O5)</b>
-            <select #securityLevel class="form-control" id="securityLevel" [(ngModel)]="securityLevel" #securityLevelRef="ngModel"
-              name="securityLevel" aria-label="Exemple" required>
-              <option value="0">Niveau 1 - Accès Restreint</option>
-              <option value="1">Niveau 2 - Personnel Autorisé</option>
-              <option value="2">Niveau 3 - Scientifiques et Agents</option>
-              <option value="3">Niveau 4 - Administrateurs</option>
-              <option value="4">Niveau 5 - O5</option>
+            <select class="form-control" id="securityLevel" formControlName="securityLevel" aria-label="Exemple">
+              <option value="1">Niveau 1 - Accès Restreint</option>
+              <option value="2">Niveau 2 - Personnel Autorisé</option>
+              <option value="3">Niveau 3 - Scientifiques et Agents</option>
+              <option value="4">Niveau 4 - Administrateurs</option>
+              <option value="5">Niveau 5 - Commandement O5</option>
             </select>
-            <p *ngIf="securityLevel.value == '0'"><b>Classe D</b></p>
-            <p *ngIf="securityLevel.value == '1'"><b>Classe C</b></p>
-            <p *ngIf="securityLevel.value == '2'"><b>Classe B</b></p>
-            <p *ngIf="securityLevel.value == '3'"><b>Classe A</b></p>
-            <p *ngIf="securityLevel.value == '4'"><b>Membre du conseil O5</b></p>
-            <div *ngIf="securityLevelRef.invalid && securityLevelRef.touched">
-              <p *ngIf="securityLevelRef.errors">Le mot de passe est obligatoire</p>
+            <p *ngIf="registerForm.get('securityLevel')?.value == '1'"><b>Classe D</b></p>
+            <p *ngIf="registerForm.get('securityLevel')?.value == '2'">Classe C <b>(Soumis à validation Classe B)</b></p>
+            <p *ngIf="registerForm.get('securityLevel')?.value == '3'">Classe B <b>(Soumis à validation Classe A)</b></p>
+            <p *ngIf="registerForm.get('securityLevel')?.value == '4'">Classe A <b>(Soumis à validation O5)</b></p>
+            <p *ngIf="registerForm.get('securityLevel')?.value == '5'">Membre du conseil O5 <b>(Soumis à validation Administrateur)</b></p>
+            <div *ngIf="registerForm.get('securityLevel')?.invalid && registerForm.get('securityLevel')?.touched">
+              <p *ngIf="registerForm.get('securityLevel')?.errors?.['required']">Le niveau de sécurité est obligatoire</p>
             </div>
           </div>
 
-          <button (click)="register()" class="btn btn-danger">Créer un compte</button>
+          <button type="submit" class="btn btn-danger" [disabled]="registerForm.invalid">Créer un compte</button>
         </form>
       </div>
     </div>

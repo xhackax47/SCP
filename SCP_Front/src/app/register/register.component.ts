@@ -1,47 +1,73 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormsModule, NgForm } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // Importer CommonModule ici
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  imports: [FormsModule, CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.less'
+  styleUrls: ['./register.component.less']
 })
 export class RegisterComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  securityLevel: number = 1;
+  registerForm: FormGroup;
   errorMessage: string = '';
   successMessage: string = '';
   registerSuccess: boolean = false;
   registerError: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+    this.registerForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)], this.usernameExists.bind(this)],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('.+@fondation-scp\\.com')], this.emailExists.bind(this)],
+      password: ['', [Validators.required, Validators.minLength(12), Validators.maxLength(30)]],
+      securityLevel: ['', Validators.required]
+    });
+  }
+
+  onSubmit() {
+    this.register();
+  }
 
   register() {
-    const accountData = {
-      userName: this.username,
-      defaultEmail: this.email,
-      password: this.password,
-      securityLevel: this.securityLevel
-    };
+    if (this.registerForm.invalid) {
+      this.registerForm.markAllAsTouched();
+      return;
+    }
 
-    this.http.post('http://localhost:8080/account', accountData).subscribe({
+    const accountData = this.registerForm.value;
+
+    this.http.post('http://localhost:8080/account', accountData, { responseType: 'text' }).subscribe({
       next: (response) => {
         this.registerSuccess = true;
-        this.successMessage = 'Compte créé avec succès !';
+        this.successMessage = response;
         this.errorMessage = '';
         setTimeout(() => this.router.navigate(['/login']), 1000);
       },
       error: (error) => {
         this.registerSuccess = false;
-        this.errorMessage = 'Erreur lors de la création du compte';
+        this.errorMessage = error.error;
         this.successMessage = '';
       }
     });
+  }
+
+  usernameExists(control: AbstractControl): Observable<ValidationErrors | null> {
+    return this.http.get<boolean>(`http://localhost:8080/account/exists/username/${control.value}`).pipe(
+      map(exists => (exists ? { usernameExists: true } : null))
+    );
+  }
+
+  emailExists(control: AbstractControl): Observable<ValidationErrors | null> {
+    return this.http.get<boolean>(`http://localhost:8080/account/exists/email/${control.value}`).pipe(
+      map(exists => (exists ? { emailExists: true } : null))
+    );
   }
 }
